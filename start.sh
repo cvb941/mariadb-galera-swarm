@@ -423,4 +423,5 @@ test -s /var/run/galera-healthcheck-1.pid && kill $(cat /var/run/galera-healthch
 test -s /var/run/galera-healthcheck-2.pid && kill $(cat /var/run/galera-healthcheck-2.pid)
 
 echo "Goodbye"
+cat /var/log/mysql/error.log
 exit $RC
