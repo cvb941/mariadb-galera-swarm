@@ -1,7 +1,6 @@
-FROM jsurf/rpi-mariadb:stretch
+FROM __BASEIMAGE_ARCH__
 
-# Download blocked from http://www.quicklz.com/qpress-11-linux-x64.tar
-COPY bin/qpress-11-linux-arm32v6.tar /tmp/qpress.tar
+COPY bin/qpress-11-linux-__DOCKER_ARCH__.tar /tmp/qpress.tar
 
 RUN set -x \
     && apt-get update \
@@ -18,7 +17,7 @@ RUN set -x \
 
 COPY conf.d/*                		/etc/mysql/conf.d/
 COPY *.sh                    		/usr/local/bin/
-COPY bin/galera-healthcheck-arm32v6  	/usr/local/bin/galera-healthcheck
+COPY bin/galera-healthcheck-__DOCKER_ARCH__  	/usr/local/bin/galera-healthcheck
 COPY primary-component.sql   		/
 
 # Fix permissions
