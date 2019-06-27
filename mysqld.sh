@@ -19,10 +19,10 @@ function do_install_db {
 		# Start temporary server with no networking for loading tzinfo
 		if [[ -n $SKIP_TZINFO ]]; then return 0; fi
 		echo "${LOG_MESSAGE} Loading timezone info..."
-		mysqld --skip-networking --skip-grant-tables --socket=/tmp/mysql.sock &
+		mysqld --skip-networking --skip-grant-tables --socket=/var/run/mysqld/mysqld.sock﻿ &
 		local pid=$!
 		sleep 3
-		mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --protocol=socket -uroot -hlocalhost --socket=/tmp/mysql.sock mysql
+		mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --protocol=socket -uroot -hlocalhost --socket=/var/run/mysqld/mysqld.sock﻿ mysql
 		if ! kill -s TERM $pid || ! wait $pid; then
 			echo "${LOG_MESSAGE} Loading tzinfo failed."
 			exit 1
