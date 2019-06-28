@@ -1,4 +1,4 @@
-FROM linuxserver/mariadb
+FROM linuxserver/mariadb:arm32v7-110.3.16mariabionic-ls21
 
 COPY bin/qpress-11-linux-arm32v6.tar /tmp/qpress.tar
 
