@@ -19,6 +19,12 @@ for mariadb_ver in "10.1" "10.2" "10.3"; do
         # Architecture-specific binaries
         sed -i "s|__DOCKER_ARCH__|${docker_arch}|g" Dockerfile-${mariadb_ver}.${docker_arch}
         
+        # SST method based on mariadb version
+        if [ ${mariadb_ver} == "10.1" ]; then
+            sed -i "s|__SST_METHOD__|xtrabackup-v2|g" Dockerfile-${mariadb_ver}.${docker_arch}
+        else
+            sed -i "s|__SST_METHOD__|mariabackup|g" Dockerfile-${mariadb_ver}.${docker_arch}
+        fi
         
     done
     
