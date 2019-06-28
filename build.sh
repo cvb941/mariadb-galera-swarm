@@ -13,7 +13,7 @@ for mariadb_ver in "10.1" "10.2" "10.3"; do
         # Architecture-specific base image
         case ${docker_arch} in
             amd64   )  sed -i "s|__BASEIMAGE_ARCH__|mariadb:${mariadb_ver}|g" Dockerfile-${mariadb_ver}.${docker_arch} ;;
-            arm32v6 )  sed -i "s|__BASEIMAGE_ARCH__|linuxserver/mariadb|g" Dockerfile-${mariadb_ver}.${docker_arch} ;;
+            arm32v6 )  sed -i "s|__BASEIMAGE_ARCH__|linuxserver/mariadb:arm32v7-110.3.16mariabionic-ls21|g" Dockerfile-${mariadb_ver}.${docker_arch} ;;
         esac
         
         # Architecture-specific binaries
